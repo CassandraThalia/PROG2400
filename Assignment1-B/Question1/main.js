@@ -1,5 +1,5 @@
 function letterFun(myWord){
-    if (myWord.charAt(0).toUpperCase() == myWord.charAt(myWord.length-1).toUpperCase()){
+    if (myWord.charAt(0).toUpperCase() === myWord.charAt(myWord.length-1).toUpperCase()){
         const reversedWord = myWord.split("").reverse().join("");
         console.log(reversedWord);
     }
