@@ -62,8 +62,9 @@ function countFun(myArr){
 const testArr1 = [1, 2, 3, 6, 9, 34, 2, 6]; 	
 const testArr2 = [3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3];
 const testArr3 = [100, 101, 102, 3, 4, 5, 6, 9];
+const testArr4 = [3,5,1,3,4,5,2,6,7]
 
-countFun(testArr1);
+countFun(testArr4);
 
 
 
