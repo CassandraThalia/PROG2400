@@ -1,4 +1,3 @@
-(function(){
 const thisDate = Date.now();
 const birthdate = new Date("07/22/2022");
 
@@ -26,8 +25,7 @@ console.log("There are " +
     minutes + " minutes, and " + 
     seconds + " seconds left until my birthday!")
 
-})
-
+    
 
 //References:
 //https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript
