@@ -34,13 +34,30 @@ function countFun(myArr){
         lastNum = myArr[i]
     }
 
-    //Find highest number of tallies
-    const max = Math.max.apply(null, tallies);
-    //Get the index of that number
-    const index = tallies.indexOf(max);
-    //Apply index to Totals list
-    console.log(totals[index]);
+    var highstTallyIndex = 0;
+    //Begin loop through Tally array
+    for (let i = 1; i < tallies.length; i++){
+        //Check value of second tally against value of first tally; if higher, assign index
+        if (tallies[i] > tallies[i-1]){
+            highstTallyIndex = i;
+        }
+        //If tallies are the same, check their values in the Totals array, assign higher value to index
+        else if (tallies[i] ===  tallies[i-1]){
+            if (totals[i] > totals[i-1]){
+                highstTallyIndex = i;
+            }
+            else {
+                highstTallyIndex = i - 1;
+            }
+        }
+        else {
+            highstTallyIndex = i - 1;
+        }
+    }
+
+    console.log(totals[highstTallyIndex]);
 }
+
 
 const testArr1 = [1, 2, 3, 6, 9, 34, 2, 6]; 	
 const testArr2 = [3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3];

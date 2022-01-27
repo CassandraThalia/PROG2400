@@ -9,8 +9,8 @@ function letterFun(myWord){
     }
 }
 
-const myWord1 = "Triscuit"
-const myWord2 = "Cracker"
+const myWord1 = "Barb"
+const myWord2 = "Coal"
 
 
 letterFun(myWord1);
