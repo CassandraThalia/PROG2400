@@ -6,7 +6,7 @@
     .then(function(data){
         fetch("https://deckofcardsapi.com/api/deck/" + data['deck_id'] + "/draw/?count=5")
         //fetch("http://pokerhand-tester.herokuapp.com/flush")
-        //fetch("http://pokerhand-tester.herokuapp.com/straight")
+        fetch("http://pokerhand-tester.herokuapp.com/straight")
         //fetch("http://pokerhand-tester.herokuapp.com/royalflush")
         //fetch("http://pokerhand-tester.herokuapp.com/onepair")
         //fetch("http://pokerhand-tester.herokuapp.com/threeofakind")
@@ -149,11 +149,11 @@
             }
         }
         //First account for Aces being high or low 
-        if (sortedHand[0].card.value === "2" &&
-            sortedHand[1].card.value === "3" &&
-            sortedHand[2].card.value === "4" &&
-            sortedHand[3].card.value === "5" &&
-            sortedHand[4].card.value === "ACE"){
+        if (sortedHand[0].card.value === valueOrder[0] &&
+            sortedHand[1].card.value === valueOrder[1] &&
+            sortedHand[2].card.value === valueOrder[2] &&
+            sortedHand[3].card.value === valueOrder[3] &&
+            sortedHand[4].card.value === valueOrder[12]){
                 return true;
             }
         else if (sortedHand[0].card.value === valueOrder[startIndex] &&
@@ -170,7 +170,6 @@
 
     function checkForMatches(sortedHand){
         let sameCount = 0;
-        //let difCount = 0
         let value = "";
 
         for (let i = 1; i < sortedHand.length; i++){
