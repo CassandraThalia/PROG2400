@@ -6,7 +6,7 @@
     .then(function(data){
         fetch("https://deckofcardsapi.com/api/deck/" + data['deck_id'] + "/draw/?count=5")
         //fetch("http://pokerhand-tester.herokuapp.com/flush")
-        fetch("http://pokerhand-tester.herokuapp.com/straight")
+        //fetch("http://pokerhand-tester.herokuapp.com/straight")
         //fetch("http://pokerhand-tester.herokuapp.com/royalflush")
         //fetch("http://pokerhand-tester.herokuapp.com/onepair")
         //fetch("http://pokerhand-tester.herokuapp.com/threeofakind")
@@ -79,6 +79,7 @@
             fullHouse = true;
         }  
 
+        //Get response based on bools
         if (royalFlush === true){
             return "Royal Flush";
         }
@@ -110,8 +111,6 @@
         {
             return "High Card"
         }
-
-        
     }
 
     function checkForFlush(hand){
