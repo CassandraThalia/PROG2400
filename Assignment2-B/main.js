@@ -1,5 +1,4 @@
 (() => {
-
     fetch('https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,artist_titles,category_titles,term_titles,image_id&limit=100')
     .then(function(response){
         return response.json();
@@ -18,7 +17,7 @@
             myHTMLOutput += "<td> <table class='innerTable'>"
             element.artist_titles.forEach(function(title){
                 myHTMLOutput += "<tr>";
-                myHTMLOutput += "<td class='innerTable'>" + title + "</td>"; // ST
+                myHTMLOutput += "<td class='innerTable'> &#8226; " + title + "</td>"; // ST
                 myHTMLOutput += "</tr>";
 
             })
@@ -26,7 +25,7 @@
             myHTMLOutput += "<td> <table class='innerTable'>"
             element.category_titles.forEach(function(title){
                 myHTMLOutput += "<tr>";
-                myHTMLOutput += "<td class='innerTable'>" + title + "</td>"; // ST
+                myHTMLOutput += "<td class='innerTable'> &#8226; " + title + "</td>"; // ST
                 myHTMLOutput += "</tr>";
 
             })
@@ -34,7 +33,7 @@
             myHTMLOutput += "<td> <table class='innerTable'>"
             element.term_titles.forEach(function(title){
                 myHTMLOutput += "<tr>";
-                myHTMLOutput += "<td class='innerTable'>" + title + "</td>"; // ST
+                myHTMLOutput += "<td class='innerTable'> &#8226; " + title + "</td>"; // ST
                 myHTMLOutput += "</tr>";
             })
             myHTMLOutput += "</table> </td>"
@@ -43,9 +42,8 @@
         });
 
         myHTMLOutput += "</table>"; // ST
-
-        document.querySelector("#myData").innerHTML = myHTMLOutput; // ST
-    })
+        document.querySelector("#myData").innerHTML = myHTMLOutput;
+        })
 })();
 
 //API Source:
