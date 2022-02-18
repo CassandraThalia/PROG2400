@@ -36,11 +36,6 @@
     });
 
     function getBestHand(hand){
-        let fourOfAKind = false;
-        let fullHouse = false;
-        let threeOfAKind = false;
-        let twoPair = false;
-        let pair = false;
 
         //Sort hand by card value
         let valueOrder = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
@@ -63,18 +58,23 @@
         let straight = checkForStraight(sortedHand, valueOrder);
 
         //Check for all matching cards sequences
+        let pair = false;
         if (checkForMatches(sortedHand) === 1){
             pair = true;
         }
+        let threeOfAKind = false;
         if (checkForMatches(sortedHand) === 2){
             threeOfAKind = true;
         }
+        let fourOfAKind = false;
         if (checkForMatches(sortedHand) === 3){
             fourOfAKind = true;
         }
+        let twoPair = false;
         if (checkForMatches(sortedHand) === 4){
             twoPair = true;
         }
+        let fullHouse = false;
         if (checkForMatches(sortedHand) === 5){
             fullHouse = true;
         }  
