@@ -10,6 +10,7 @@
         accessToken: 'pk.eyJ1IjoiY2Fzc2FuZHJhdGhhbGlhIiwiYSI6ImNsMGNqanBqeDBnbGQzY3BsaWpvY3YzbXEifQ.SW6zwmSWhUFdnHNYT6rDQA'
     }).addTo(map);
     
+    //Bus layer is null for now
     var busLayer = L.geoJSON(null,  {
         pointToLayer: function(feature, latlng){
             return L.marker(latlng, {icon: busIcon, rotationAngle: feature.properties.dir})
@@ -17,8 +18,8 @@
         onEachFeature: onEachFeature
     }).addTo(map);
 
+    //Function to bind popups
     function onEachFeature(feature, layer) {
-        // does this feature have a property named popupContent?
         if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup('<h3>Route Number: <b>' + feature.properties.popupContent + '</b></h3>');
         }
@@ -26,16 +27,17 @@
 
     var busIcon = L.icon({
         iconUrl: 'bus.png',
-        iconSize:     [15, 25], // width and height of the image in pixels
-        popupAnchor:  [5, 5] // point from which the popup should open relative to the iconAnchor
+        iconSize:     [15, 25],
+        popupAnchor:  [5, 5] 
     })
 
     let fetchData = () => {
         fetch('https://hrmbusapi.herokuapp.com/')
             .then((response) => response.json())
             .then((json) => {
-
-                let bearing = 0;        
+                //Account for busses with no bearing data
+                let bearing = 0;  
+                //Create filteredBusses GeoJSON object array      
                 let filteredBusses = json['entity']
                 .filter( (bus) => {
                     return bus.vehicle.trip.routeId <= 10;
@@ -57,25 +59,25 @@
                         }
                     }
                 });  
-
+                //Clear existing busses on map   
                 busLayer.clearLayers();
-
+                //Add filteredBusses object array to map
                 busLayer.addData(filteredBusses);
 
             })
+            //Within same fetch, call fetch again after 3 seconds
             .then(function()
             {
-                setTimeout( fetchData(), 3000)
+                setTimeout( fetchData(), 3000);
+                //setTimeout ( () => { busLayer.clearLayers(), fetchData() }, 5000);
             });
         }
-
+    //Initial fetch
     fetchData();   
-        
 })();
 
 
 
-//Resources:
+//Resources (besides ones provided):
 
-//https://gis.stackexchange.com/questions/229723/displaying-properties-of-geojson-in-popup-on-leaflet
 //https://gis.stackexchange.com/questions/282665/layer-adddata-circle-marker-style-pointtolayer
