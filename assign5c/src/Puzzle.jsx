@@ -40,33 +40,32 @@ export default class Puzzle extends React.Component {
     }
 
     checkAnswer = () => {
-        let won = false;
-        let gettingThere = false;
-        let mistakes = false;
-        
+        let wonList = [];
+        let gtList = [];
+        let mistakesList = [];
+
+        console.log(squareDeets[0]);
         for (let i = 0; i < squareDeets.length; i++){
             const curRow = squareDeets[i];
-            won = [...curRow].every(square => square.currentState === square.correctState)
+            wonList.push([...curRow].every(square => square.currentState === square.correctState));
 
-            mistakes = [...curRow].filter(square => square.currentState != 0).some(square => square.currentState != square.correctState)
+            mistakesList.push([...curRow].filter(square => square.currentState != 0).some(square => square.currentState != square.correctState))
     
-            gettingThere = [...curRow].filter(square => square.currentState != 0).every(square => square.currentState === square.correctState)    
+            gtList.push([...curRow].filter(square => square.currentState != 0).every(square => square.currentState === square.correctState))
         }
 
         let _msg;
-        if (won) {
+        if (wonList.every(item => item === true)) {
             _msg = "You won!"
         }
-        else if (mistakes) {
+        else if (mistakesList.some(item => (item === true))) {
             _msg = "Something is wrong"
         }
-        else if (gettingThere) {
+        else if (gtList.every(item => (item === true))) {
             _msg = "Getting there..."
         }
 
-        this.setState({msg: _msg});
-        console.log(this.state.msg)
-
+        this.setState({msg: _msg})
     }
 
     handleCheckbox = () => {
