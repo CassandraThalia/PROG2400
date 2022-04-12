@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+}
+
+.square0 {
+  background-color: lightgray;
+}
+
+.square1 {
+  background-color: green;
+}
+
+.square2 {
+  background-color: pink;
+}
+
+.boardTable {
+  max-width: max-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.wrongtrue{
+  border: 2px groove red;
+}
