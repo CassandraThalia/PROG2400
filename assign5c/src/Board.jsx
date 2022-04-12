@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Square from './Square';
 
 export default class Board extends React.Component {
